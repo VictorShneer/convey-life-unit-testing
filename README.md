@@ -25,22 +25,22 @@ In its simplest form, parameterized allows you to duplicate a test function or m
 When you need to test a piece of code that raises an exception, the standard assert statement is not sufficient, because it cannot catch the exception. Both pytest and unittest provide specialized asserts for exceptions. Use pytest.raises() assertion to check that the load() method crashes with a RuntimeError when given a bad file
 
 ```python
-	with pytest.raises(RuntimeError):
-	    # code that raise exception
+with pytest.raises(RuntimeError):
+    # code that raise exception
 ```
 
 The idea of using a mock is to temporarily hijack part of the application and replace it with a fake version that is easily controlled from the test. The unittest framework that we are using has a mock sub-package that implements this.
 
 ```python
-	>>> from unittest import mock
-	>>> fake = mock.MagicMock()
-	>>> fake.return_value = 42
-	>>> fake()
-	42
-	>>> fake('hello')
-	42
-	>>> fake('hello', number=123)
-	42
+>>> from unittest import mock
+>>> fake = mock.MagicMock()
+>>> fake.return_value = 42
+>>> fake()
+42
+>>> fake('hello')
+42
+>>> fake('hello', number=123)
+42
 ```
 
 In addition to being a fake function, the MagicMock instance keeps track of the calls it receives.
